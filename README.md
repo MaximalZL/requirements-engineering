@@ -1,1 +1,2 @@
-# requirements-engineering
+# Список участников
+- Зорин Максим *
