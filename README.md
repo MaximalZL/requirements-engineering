@@ -5,4 +5,4 @@
 - Пигута Болеслав (@NBW_MrColteR)
 - Копышев Илья (@Asmn01)
 - Рудяков Анатолий (@incriz)
-- Будылястов Аким (@LIlsokill)
+- Будылястов Аким (@akimburderluster)
