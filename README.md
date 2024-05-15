@@ -43,7 +43,7 @@
 
 # Use Cases
 
-![use_cases](/docs/img/use_cases.jpg)
+![use_cases](/docs/img/use_cases.png)
 
 # User Stories
 ## Как не авторизированный пользователь я хочу:
