@@ -25,7 +25,9 @@
 | Рекламные системы         | Google AdSense   | Позволяют размещать рекламу          | Монетизация сайта через рекламные блоки |
 |                           | Яндекс Директ    |                                      |                                        |
 
-![# Use Cases](/docs/img/use_cases.jpg)
+# Use Cases
+
+![use_cases](/docs/img/use_cases.jpg)
 
 # User Stories
 ## Как не авторизированный пользователь я хочу:
