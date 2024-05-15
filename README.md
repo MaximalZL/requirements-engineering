@@ -99,7 +99,7 @@
 
 <details>
 
-<summary> Дополнительные материалы </summary>
+<summary> # Дополнительные материалы </summary>
 
 - [Презентация - 2 итерация](https://docs.google.com/presentation/d/1CKpK3zMH-2JOCmEP2eT4igdKhnbb5PSI/edit#slide=id.p1)
 - [Презентация - 3 итерация](https://docs.google.com/presentation/d/1anC2PfXsj7O7-wJt82ZYhmWUuNbMYA4IsOIIubu5-Js/edit#slide=id.p1)
