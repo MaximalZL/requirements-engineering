@@ -134,3 +134,7 @@
 - [Презентация - 3 итерация](https://docs.google.com/presentation/d/1anC2PfXsj7O7-wJt82ZYhmWUuNbMYA4IsOIIubu5-Js/edit#slide=id.p1)
 
 </details>
+
+# ER-diagram
+
+![ER-diagram](/docs/img/ER-diagram.png)
