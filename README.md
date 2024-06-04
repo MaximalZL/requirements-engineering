@@ -137,4 +137,4 @@
 
 # ER-diagram
 
-![ER diagram](/docs/img/ER diagram.png)
+![ER diagram](/docs/img/ERdiagram.png)
