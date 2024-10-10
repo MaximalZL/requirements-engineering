@@ -1,0 +1,102 @@
+workspace {
+
+    model {
+    
+        // Системные элементы (Контекст)
+        user = person "Владелец питомцев" {
+            description "Владелец, который добавляет питомцев в систему, управляет их статусами, отвечает на заявки."
+        }
+        
+        user2 = person "Потенциальный хозяин" {
+            description "Пользователь, который ищет питомцев для усыновления или покупки."
+        }
+        
+        user3 = person "Администратор" {
+            description "Администратор, который управляет контентом, модерирует объявления и следит за безопасностью системы."
+        }
+        
+        system = softwareSystem "Сайт-приложение для поиска домашних питомцев" {
+            description "Веб-приложение для поиска питомцев, управления заявками и фильтрации по различным параметрам."
+
+            webApp = container "Веб-приложение (Frontend)" {
+                technology "React.js / HTML/CSS"
+                description "Фронтенд, который предоставляет пользователю интерфейс для поиска питомцев, регистрации, просмотра профилей и отправки заявок."
+            }
+            
+            serverApp = container "Серверное приложение (Backend)" {
+                technology "Node.js / Express"
+                description "Бэкенд для обработки запросов от фронтенда, бизнес-логики и взаимодействия с базой данных."
+            }
+            
+            database = container "База данных" {
+                technology "PostgreSQL"
+                description "База данных для хранения данных о пользователях, питомцах, заявках и сообщениях."
+            }
+            
+            api = container "API для внешних данных" {
+                technology "REST API"
+                description "API для получения данных о пользователях через соцсети, геолокации и отправки уведомлений."
+            }
+            
+            imageStorage = container "Хранилище изображений" {
+                technology "Amazon S3"
+                description "Облачное хранилище для фотографий питомцев."
+            }
+        }
+        
+        // Взаимодействие пользователей с системой
+        user -> webApp "Использует веб-приложение для поиска питомцев, регистрации и подачи заявок."
+        user2 -> webApp "Ищет питомцев, отправляет заявки на контакты с владельцами."
+        user3 -> webApp "Управляет контентом, модерирует и проверяет заявки."
+        
+        // Взаимодействие контейнеров
+        webApp -> serverApp "Отправляет запросы на поиск питомцев, регистрацию и отправку заявок."
+        serverApp -> database "Читает и записывает данные о питомцах, пользователях и заявках."
+        serverApp -> api "Использует внешние API для геолокации, авторизации через соцсети и уведомлений."
+        serverApp -> imageStorage "Загружает фотографии питомцев в хранилище изображений."
+
+    }
+
+    views {
+
+        // Диаграмма 1: Контекст системы
+        systemContext system "Context-system" {
+            include *
+            autolayout lr
+        }
+
+        // Диаграмма 2: Контейнеры
+        container system "Containers" {
+            include *
+            autolayout lr
+        }
+
+        styles {
+            element "webApp" {
+                background "#f9d42d"
+            }
+    
+            element "serverApp" {
+                background "#6fa3ef"
+            }
+    
+            element "database" {
+                background "#f39c12"
+            }
+    
+            element "api" {
+                background "#48c2f0"
+            }
+    
+            element "imageStorage" {
+                background "#2f9e41"
+            }
+    
+            # person "user" {
+            #     background "#f9d42d"
+            # }
+        }
+    }
+}
+
+// url: https://structurizr.com/dsl
