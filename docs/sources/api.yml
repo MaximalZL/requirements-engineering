@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  title: MyPets API
+  version: 0.0.1
+  description: API for interaction with the advertisement and user management application.
+
+servers:
+  - url: https://api.mypets.ru
+    description: Предполагаемый домен
+
+paths:
+  /api/users:
+    get:
+      summary: Получение списка пользователей
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Создание нового пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Пользователь успешно создан
+
+  /api/users/{id}:
+    get:
+      summary: Получение пользователя по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные пользователя получены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    put:
+      summary: Обновление данных пользователя
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Пользователь успешно обновлен
+
+    delete:
+      summary: Удаление пользователя
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Пользователь успешно удален
+
+  /pets:
+    get:
+      summary: Получить список питомцев
+      operationId: getPets
+      responses:
+        '200':
+          description: Список питомцев
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ID:
+                      type: integer
+                    Имя:
+                      type: string
+                    Возраст:
+                      type: integer
+                    Пол:
+                      type: string
+                    Вид:
+                      type: string
+                    Порода:
+                      type: string
+
+    post:
+      summary: Добавить нового питомца
+      operationId: createPet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Имя:
+                  type: string
+                Возраст:
+                  type: integer
+                Пол:
+                  type: string
+                  enum: [Мужской, Женский]
+                Вид:
+                  type: string
+                Порода:
+                  type: string
+                ID_владельца:
+                  type: integer
+      responses:
+        '201':
+          description: Питомец добавлен
+
+  /pets/{petId}:
+    get:
+      summary: Получить информацию о питомце
+      operationId: getPet
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: ID питомца
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Информация о питомце
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                  Имя:
+                    type: string
+                  Возраст:
+                    type: integer
+                  Пол:
+                    type: string
+                  Вид:
+                    type: string
+                  Порода:
+                    type: string
+                  ID_владельца:
+                    type: integer
+
+  /api/ads:
+    get:
+      summary: Получение списка объявлений
+      responses:
+        '200':
+          description: Список успешно получен
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advertisement'
+
+    post:
+      summary: Создание нового объявления
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Advertisement'
+      responses:
+        '201':
+          description: Объявление успешно создано
+
+  /api/ads/{id}:
+    put:
+      summary: Обновление данных объявления
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Advertisement'
+      responses:
+        '200':
+          description: Данные об объявлении успешно обновлены
+
+    delete:
+      summary: Удаление объявления
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Объявление успешно удалено
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        registration_date:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [active, banned]
+
+    Advertisement:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        pet_id:
+          type: integer
+        description:
+          type: string
+        price:
+          type: number
+        created_date:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [active, closed]

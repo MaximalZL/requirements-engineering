@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+
+actor Client as "User (Vue.js App)"
+node "Reverse Proxy (Nginx)" {
+    [SSL Termination]
+    [Rate Limiting]
+    [CORS Management]
+}
+
+node "Backend (Laravel API)" {
+    [API Endpoints]
+    [Authentication (JWT)]
+    [Business Logic]
+    [Encryption Module]
+    [Logger]
+}
+
+database "MySQL Database" {
+    [User Data]
+    [Encrypted PII]
+    [Backups]
+}
+
+cloud "Monitoring & Logging" {
+    [Prometheus/Grafana]
+    [Sentry (Error Tracking)]
+    [Request Logs]
+}
+
+Client --> [Reverse Proxy (Nginx)]
+[Reverse Proxy (Nginx)] --> [Backend (Laravel API)]
+[Backend (Laravel API)] --> [MySQL Database]
+[Backend (Laravel API)] --> [Monitoring & Logging]
+[Reverse Proxy (Nginx)] --> [Monitoring & Logging]
+
+@enduml

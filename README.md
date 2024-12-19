@@ -236,3 +236,7 @@
 ```
 
 ![db-announcements](./docs/preview/example-db-announcement.jpg)
+
+## Примерная архитектура (RESTful):
+
+![scheme_architechure](./docs/preview/scheme_architechure.png)
