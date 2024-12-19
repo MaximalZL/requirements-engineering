@@ -240,3 +240,5 @@
 ## Примерная архитектура (RESTful):
 
 ![scheme_architechure](./docs/preview/scheme_architechure.png)
+
+[Итоговая презентация](https://docs.google.com/presentation/d/15rpXYQIQ2x6QUyK4r0MrqY1Uf7OP80x5Ladvir8KuaE/edit?usp=sharing)
